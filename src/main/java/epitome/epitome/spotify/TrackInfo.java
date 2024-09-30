@@ -1,4 +1,4 @@
-package spotify;
+package epitome.epitome.spotify;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

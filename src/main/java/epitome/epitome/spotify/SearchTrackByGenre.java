@@ -1,4 +1,4 @@
-package spotify;
+package epitome.epitome.spotify;
 
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;

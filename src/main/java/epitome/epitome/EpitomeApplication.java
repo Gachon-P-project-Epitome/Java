@@ -1,9 +1,7 @@
-package spotify;
+package epitome.epitome;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class EpitomeApplication {
@@ -12,21 +10,23 @@ public class EpitomeApplication {
 		SpringApplication.run(EpitomeApplication.class, args);
 	}
 
+	/*
 	@Bean
 	CommandLineRunner run(SearchTrack searchTrack) {
 		return args -> {
-			searchTrack.searchTracks_Sync("abcdefu"); // 검색할 트랙 검색 이름
+			searchTrack.searchTracks_Sync("예뻤어"); // 검색할 트랙 검색 이름
 		};
 	}
-
+	*/
 	/*
 	@Bean
 	CommandLineRunner run(SearchTrackByGenre searchTrackByGenre) {
 		return args -> {
-			searchTrackByGenre.SearchTrackByGenre_Sync("pop"); // 장르 예시: pop
+			searchTrackByGenre.SearchTrackByGenre_Sync("k-pop"); // 장르 예시: pop
 		};
 	}
-	 */
+	*/
+
 	/*
 	@Bean
 	CommandLineRunner run(SearchTrackFromPlayList searchTrackFromPlayList) {
@@ -36,6 +36,5 @@ public class EpitomeApplication {
 			searchTrackFromPlayList.searchPlaylist(playlistId,limit);
 		};
 	}
-
-	 */
+	*/
 }

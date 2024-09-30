@@ -1,4 +1,4 @@
-package spotify;
+package epitome.epitome.spotify;
 
 import org.springframework.stereotype.Component;
 
