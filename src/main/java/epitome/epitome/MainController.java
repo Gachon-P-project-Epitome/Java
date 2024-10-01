@@ -2,15 +2,10 @@ package epitome.epitome;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
@@ -18,25 +13,26 @@ import java.util.List;
 public class MainController {
 
     private final FindTrackService findTrackService;
+    private final GenreClassificationService genreClassificationService;
 
     @Autowired
-    public MainController(FindTrackService findTrackService) {
+    public MainController(FindTrackService findTrackService,GenreClassificationService genreClassificationService) {
         this.findTrackService = findTrackService;
+        this.genreClassificationService = genreClassificationService;
     }
 
     @PostMapping("/upload")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<List<Track>> listTracks(@RequestParam("file") MultipartFile file) {
-        String directory = "/Users/사용자명/uploads";  // 저장할 폴더 경로
-        Path path = Paths.get(directory, file.getOriginalFilename());
 
         try {
-            // 파일을 루트 디렉토리에 저장
-            file.transferTo(path.toFile()); // 파일 전송
+            //음악 원본 파일을 바이트 배열로 변경
+            byte[] musicFileBytes = file.getBytes();
 
-            // 저장된 음악 파일 확인
-            System.out.println("파일이 저장되었습니다: " + path.toString());
+            //장르 분류 서비스 사용
+            //String genre = genreClassificationService.classifyGenre(musicFileBytes);
 
-            // 트랙 정보를 검색하고 반환
+            // 트랙 정보를 검색하고 반환(장르의 해당하는 id로 변경)
             List<Track> tracks = findTrackService.searchTrack("37i9dQZF1DX3ZeFHRhhi7Y");
             return ResponseEntity.ok(tracks);
         } catch (IOException e) {
