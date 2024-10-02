@@ -14,7 +14,7 @@ public class EpitomeApplication {
 	@Bean
 	CommandLineRunner run(SearchTrack searchTrack) {
 		return args -> {
-			searchTrack.searchTracks_Sync("예뻤어"); // 검색할 트랙 검색 이름
+			searchTrack.searchTracks_Sync("너랑나"); // 검색할 트랙 검색 이름
 		};
 	}
 	*/
