@@ -14,11 +14,14 @@ public class MainController {
 
     private final FindTrackService findTrackService;
     private final GenreClassificationService genreClassificationService;
+    private final ToPlayListService toPlayListService;
 
     @Autowired
-    public MainController(FindTrackService findTrackService,GenreClassificationService genreClassificationService) {
+    public MainController(FindTrackService findTrackService,GenreClassificationService genreClassificationService,
+                          ToPlayListService toPlayListService) {
         this.findTrackService = findTrackService;
         this.genreClassificationService = genreClassificationService;
+        this.toPlayListService = toPlayListService;
     }
 
     @PostMapping("/upload")
@@ -33,7 +36,8 @@ public class MainController {
             //String genre = genreClassificationService.classifyGenre(musicFileBytes);
 
             // 트랙 정보를 검색하고 반환(장르의 해당하는 id로 변경)
-            List<Track> tracks = findTrackService.searchTrack("37i9dQZF1DX3ZeFHRhhi7Y");
+            String playlistId = toPlayListService.getPlaylistIdByGenre("Hip-Pop");
+            List<Track> tracks = findTrackService.searchTrack(playlistId);
             return ResponseEntity.ok(tracks);
         } catch (IOException e) {
             // 예외 처리: 파일 저장 중 오류 발생 시

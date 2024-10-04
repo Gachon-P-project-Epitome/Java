@@ -18,6 +18,8 @@ public class EpitomeApplication {
 		};
 	}
 	*/
+
+
 	/*
 	@Bean
 	CommandLineRunner run(SearchTrackByGenre searchTrackByGenre) {
@@ -31,10 +33,12 @@ public class EpitomeApplication {
 	@Bean
 	CommandLineRunner run(SearchTrackFromPlayList searchTrackFromPlayList) {
 		return args -> {
-			String playlistId = "37i9dQZF1DX3ZeFHRhhi7Y";  // 플레이리스트 ID
+			String playlistId = "7n1kAASte9LelSVcNf2axY";  // 플레이리스트 ID
 			int limit = 10;
 			searchTrackFromPlayList.searchPlaylist(playlistId,limit);
 		};
 	}
 	*/
+
+
 }

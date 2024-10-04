@@ -12,14 +12,14 @@ public class ToPlayListService {
     // 장르와 playlistId를 미리 설정
     public ToPlayListService() {
         genrePlaylistMap = new HashMap<>();
-        genrePlaylistMap.put("Hip-Pop", "playlistId1");
-        genrePlaylistMap.put("Electronic", "playlistId2");
-        genrePlaylistMap.put("Rock", "playlistId3");
-        genrePlaylistMap.put("Instrumental", "playlistId4");
-        genrePlaylistMap.put("International", "playlistId5");
-        genrePlaylistMap.put("Experimental", "playlistId6");
-        genrePlaylistMap.put("Pop", "playlistId7");
-        genrePlaylistMap.put("Folk", "playlistId8");
+        genrePlaylistMap.put("Hip-Pop", "0BwGaGFGYCGpSI3BWFnFQZ");
+        genrePlaylistMap.put("Electronic", "7ioVxAwaaEJgjTOlkWoGTE");
+        genrePlaylistMap.put("Rock", "2kf2UuHxJ5YBU1qJUab7Kc");
+        genrePlaylistMap.put("Instrumental", "4Mbe4JD8i0nn9wsJDXiw3g");
+        genrePlaylistMap.put("International", "7MMOK7hwhd2xUeXttkZhTT");
+        genrePlaylistMap.put("Experimental", "0BQyQOeez75wN64tG2kTLl");
+        genrePlaylistMap.put("Pop", "78LHzws4XXFYgXQPBApYlr");
+        genrePlaylistMap.put("Folk", "7n1kAASte9LelSVcNf2axY");
     }
 
     // 주어진 장르에 해당하는 playlistId를 반환
