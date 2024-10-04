@@ -1,4 +1,4 @@
-package epitome.epitome;
+package epitome.epitome.services;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
