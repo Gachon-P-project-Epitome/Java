@@ -68,14 +68,14 @@ public class FindTrackService {
 
                 if (spotifyTrack.getPreviewUrl() != null && album.getImages().length > 0) {
                     // 유효한 트랙만 custom epitome.epitome.model.Track 객체로 변환
-                    epitome.epitome.model.Track track = new epitome.epitome.model.Track(
-                            spotifyTrack.getName(),
-                            artists[0].getName(),
-                            album.getName(),
-                            album.getImages()[0].getUrl(), // 앨범 이미지 URL
-                            spotifyTrack.getPreviewUrl(),
-                            0.0 // similarity 값은 나중에 설정
-                    );
+                    epitome.epitome.model.Track track = epitome.epitome.model.Track.builder()
+                            .name(spotifyTrack.getName())
+                            .artistName(artists[0].getName())
+                            .album(album.getName())
+                            .albumImageUrl(album.getImages()[0].getUrl()) // 앨범 이미지 URL
+                            .previewUrl(spotifyTrack.getPreviewUrl())
+                            .similarity(0.0) // similarity 값은 나중에 설정
+                            .build();
 
                     validTracks.add(track);
                 }

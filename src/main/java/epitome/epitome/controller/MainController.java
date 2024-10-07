@@ -50,10 +50,13 @@ public class MainController {
             Double[] similariy = similarityClassificationService.classifySimilarity(musicFileBytes,tracks);
             //tracks 에 유사도 추가
 
+
             for(int i=0;i<similariy.length;i++){
                 tracks.get(i).setSimilarity(similariy[i]);
             }
-            */
+
+             */
+
             return ResponseEntity.ok(tracks);
         } catch (IOException e) {
             // 예외 처리: 파일 저장 중 오류 발생 시
