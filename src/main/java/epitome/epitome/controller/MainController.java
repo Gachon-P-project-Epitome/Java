@@ -1,6 +1,6 @@
 package epitome.epitome.controller;
 
-import epitome.epitome.model.Track;
+import epitome.epitome.model.MusicTrack;
 import epitome.epitome.services.FindTrackService;
 import epitome.epitome.services.GenreClassificationService;
 import epitome.epitome.services.SimilarityClassificationService;
@@ -33,7 +33,7 @@ public class MainController {
 
     @PostMapping("/upload")
     @CrossOrigin(origins = "*")
-    public ResponseEntity<List<Track>> listTracks(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<List<MusicTrack>> listTracks(@RequestParam("file") MultipartFile file) {
 
         try {
             //음악 원본 파일을 바이트 배열로 변경
@@ -44,7 +44,7 @@ public class MainController {
 
             // 트랙 정보를 검색하고 반환(장르의 해당하는 id로 변경)
             String playlistId = toPlayListService.getPlaylistIdByGenre("Pop");
-            List<Track> tracks = findTrackService.searchTrack(playlistId);
+            List<MusicTrack> tracks = findTrackService.searchTrack(playlistId);
             /*
             //유사도 분류 서비스 사용
             Double[] similariy = similarityClassificationService.classifySimilarity(musicFileBytes,tracks);

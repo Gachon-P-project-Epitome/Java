@@ -4,6 +4,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.*;
 import com.wrapper.spotify.requests.data.playlists.GetPlaylistRequest;
+import epitome.epitome.model.MusicTrack;
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class FindTrackService {
         this.createToken = createToken;
     }
 
-    public List<epitome.epitome.model.Track> searchTrack(String playlistId) {
+    public List<MusicTrack> searchTrack(String playlistId) {
         String accessToken = createToken.accesstoken();
         if (accessToken == null) {
             System.out.println("Failed to get access token.");
@@ -53,7 +54,7 @@ public class FindTrackService {
             Collections.shuffle(trackList);
 
             // 필요한 트랙 데이터만 list로 만들기
-            List<epitome.epitome.model.Track> validTracks = new ArrayList<>();
+            List<MusicTrack> validTracks = new ArrayList<>();
             for (PlaylistTrack playlistTrack : trackList) {
                 if (validTracks.size() >= 10) {
                     break; // 이미 10개의 트랙을 찾았다면 종료
@@ -68,7 +69,7 @@ public class FindTrackService {
 
                 if (spotifyTrack.getPreviewUrl() != null && album.getImages().length > 0) {
                     // 유효한 트랙만 custom epitome.epitome.model.Track 객체로 변환
-                    epitome.epitome.model.Track track = new epitome.epitome.model.Track(
+                    MusicTrack musicTrack = new MusicTrack(
                             spotifyTrack.getName(),
                             artists[0].getName(),
                             album.getName(),
@@ -77,7 +78,7 @@ public class FindTrackService {
                             0.0 // similarity 값은 나중에 설정
                             );
 
-                    validTracks.add(track);
+                    validTracks.add(musicTrack);
                 }
             }
 

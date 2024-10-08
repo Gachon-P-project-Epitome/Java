@@ -1,6 +1,6 @@
 package epitome.epitome.services;
 
-import epitome.epitome.model.Track;
+import epitome.epitome.model.MusicTrack;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -22,14 +22,14 @@ public class SimilarityClassificationService {
         this.restTemplate=restTemplate;
     }
 
-    public Double[] classifySimilarity(byte[] musicFileBytes,List<Track> tracks){
+    public Double[] classifySimilarity(byte[] musicFileBytes,List<MusicTrack> tracks){
 
         String flaskApiUrl = ""; //플라스크서버 url;
 
         // preview url 추출
         List<String> previewUrls = new ArrayList<>();
-        for(Track track :tracks){
-            previewUrls.add(track.getPreviewUrl());
+        for(MusicTrack musicTrack :tracks){
+            previewUrls.add(musicTrack.getPreviewUrl());
         }
 
         // 요청 헤더 설정
