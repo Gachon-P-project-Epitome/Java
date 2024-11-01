@@ -14,4 +14,5 @@ public class MusicTrack {
     private String albumImageUrl;
     private String previewUrl;
     private double similarity;
+    private String id;
 }

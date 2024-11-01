@@ -20,6 +20,7 @@ public class ToPlayListService {
         genrePlaylistMap.put("Experimental", "0BQyQOeez75wN64tG2kTLl");
         genrePlaylistMap.put("Pop", "78LHzws4XXFYgXQPBApYlr");
         genrePlaylistMap.put("Folk", "7n1kAASte9LelSVcNf2axY");
+        genrePlaylistMap.put("qwer","42k95wSSLjKQT8Vp1aXwzP");
     }
 
     // 주어진 장르에 해당하는 playlistId를 반환

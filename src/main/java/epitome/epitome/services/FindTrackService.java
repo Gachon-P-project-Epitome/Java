@@ -75,7 +75,8 @@ public class FindTrackService {
                             album.getName(),
                             album.getImages()[0].getUrl(),
                             spotifyTrack.getPreviewUrl(),
-                            0.0 // similarity 값은 나중에 설정
+                            0.0, // similarity 값은 나중에 설정
+                            spotifyTrack.getId()
                             );
 
                     validTracks.add(musicTrack);
