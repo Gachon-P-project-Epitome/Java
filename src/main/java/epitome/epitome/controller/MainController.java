@@ -23,14 +23,14 @@ public class MainController {
 
     @Autowired
     public MainController(FindTrackService findTrackService, GenreClassificationService genreClassificationService,
-                          ToPlayListService toPlayListService, SimilarityClassificationService similarityClassificationService,
-                          AllTrackService allTrackService,FindLengthService findLengthService) {
+            ToPlayListService toPlayListService, SimilarityClassificationService similarityClassificationService,
+            AllTrackService allTrackService, FindLengthService findLengthService) {
         this.findTrackService = findTrackService;
         this.genreClassificationService = genreClassificationService;
         this.toPlayListService = toPlayListService;
         this.similarityClassificationService = similarityClassificationService;
-        this.allTrackService=allTrackService;
-        this.findLengthService=findLengthService;
+        this.allTrackService = allTrackService;
+        this.findLengthService = findLengthService;
     }
 
     @PostMapping("/upload")
@@ -38,25 +38,26 @@ public class MainController {
     public ResponseEntity<List<MusicTrack>> listTracks(@RequestParam("file") MultipartFile file) {
 
         try {
-            //음악 원본 파일을 바이트 배열로 변경
+            // 음악 원본 파일을 바이트 배열로 변경
             byte[] musicFileBytes = file.getBytes();
 
-            //장르 분류 서비스 사용
-            //String genre = genreClassificationService.classifyGenre(musicFileBytes);
+            // 장르 분류 서비스 사용
+            // String genre = genreClassificationService.classifyGenre(musicFileBytes);
 
             // 트랙 정보를 검색하고 반환(장르의 해당하는 id로 변경)
             String playlistId = toPlayListService.getPlaylistIdByGenre("Pop");
             List<MusicTrack> tracks = findTrackService.searchTrack(playlistId);
             /*
-            //유사도 분류 서비스 사용
-            Double[] similariy = similarityClassificationService.classifySimilarity(musicFileBytes,tracks);
-            //tracks 에 유사도 추가
-
-
-            for(int i=0;i<similariy.length;i++){
-                tracks.get(i).setSimilarity(similariy[i]);
-            }
-
+             * //유사도 분류 서비스 사용
+             * Double[] similariy =
+             * similarityClassificationService.classifySimilarity(musicFileBytes,tracks);
+             * //tracks 에 유사도 추가
+             * 
+             * 
+             * for(int i=0;i<similariy.length;i++){
+             * tracks.get(i).setSimilarity(similariy[i]);
+             * }
+             * 
              */
 
             return ResponseEntity.ok(tracks);
@@ -67,30 +68,33 @@ public class MainController {
         }
 
     }
+
+    // url있는 장르당 노래
     @PostMapping("/findAll")
     @CrossOrigin("*")
     public ResponseEntity<List<MusicTrack>> alltracks(@RequestParam("file") MultipartFile file) {
 
         try {
-            //음악 원본 파일을 바이트 배열로 변경
+            // 음악 원본 파일을 바이트 배열로 변경
             byte[] musicFileBytes = file.getBytes();
 
-            //장르 분류 서비스 사용
-            //String genre = genreClassificationService.classifyGenre(musicFileBytes);
+            // 장르 분류 서비스 사용
+            // String genre = genreClassificationService.classifyGenre(musicFileBytes);
 
             // 트랙 정보를 검색하고 반환(장르의 해당하는 id로 변경)
-            String playlistId = toPlayListService.getPlaylistIdByGenre("Instrumental");
+            String playlistId = toPlayListService.getPlaylistIdByGenre("qwer");
             List<MusicTrack> tracks = allTrackService.searchAll(playlistId);
             /*
-            //유사도 분류 서비스 사용
-            Double[] similariy = similarityClassificationService.classifySimilarity(musicFileBytes,tracks);
-            //tracks 에 유사도 추가
-
-
-            for(int i=0;i<similariy.length;i++){
-                tracks.get(i).setSimilarity(similariy[i]);
-            }
-
+             * //유사도 분류 서비스 사용
+             * Double[] similariy =
+             * similarityClassificationService.classifySimilarity(musicFileBytes,tracks);
+             * //tracks 에 유사도 추가
+             * 
+             * 
+             * for(int i=0;i<similariy.length;i++){
+             * tracks.get(i).setSimilarity(similariy[i]);
+             * }
+             * 
              */
 
             return ResponseEntity.ok(tracks);
@@ -102,31 +106,32 @@ public class MainController {
 
     }
 
-
+    // 전체 노래수 찾기
     @PostMapping("/length")
     @CrossOrigin("*")
     public ResponseEntity<List<MusicTrack>> length(@RequestParam("file") MultipartFile file) {
 
         try {
-            //음악 원본 파일을 바이트 배열로 변경
+            // 음악 원본 파일을 바이트 배열로 변경
             byte[] musicFileBytes = file.getBytes();
 
-            //장르 분류 서비스 사용
-            //String genre = genreClassificationService.classifyGenre(musicFileBytes);
+            // 장르 분류 서비스 사용
+            // String genre = genreClassificationService.classifyGenre(musicFileBytes);
 
             // 트랙 정보를 검색하고 반환(장르의 해당하는 id로 변경)
             String playlistId = toPlayListService.getPlaylistIdByGenre("Hip-Pop");
             List<MusicTrack> tracks = findLengthService.searchLength(playlistId);
             /*
-            //유사도 분류 서비스 사용
-            Double[] similariy = similarityClassificationService.classifySimilarity(musicFileBytes,tracks);
-            //tracks 에 유사도 추가
-
-
-            for(int i=0;i<similariy.length;i++){
-                tracks.get(i).setSimilarity(similariy[i]);
-            }
-
+             * //유사도 분류 서비스 사용
+             * Double[] similariy =
+             * similarityClassificationService.classifySimilarity(musicFileBytes,tracks);
+             * //tracks 에 유사도 추가
+             * 
+             * 
+             * for(int i=0;i<similariy.length;i++){
+             * tracks.get(i).setSimilarity(similariy[i]);
+             * }
+             * 
              */
 
             return ResponseEntity.ok(tracks);
@@ -137,10 +142,5 @@ public class MainController {
         }
 
     }
-
-
-
-
-
 
 }

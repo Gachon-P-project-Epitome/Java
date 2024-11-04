@@ -1,5 +1,6 @@
 package epitome.epitome.services;
 
+import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.*;
@@ -47,6 +48,7 @@ public class AllTrackService {
                         .getPlaylistsItems(playlistId)
                         .offset(offset)
                         .limit(limit)
+                        .market(CountryCode.US)
                         .build();
 
                 Paging<PlaylistTrack> playlistTracks = getPlaylistsItemsRequest.execute();
